@@ -6,10 +6,10 @@ void main() {
   runApp(
     DownloaderNotifier.initialize(
       // onProgress: (queue) => console.log('Queue: $queue'),
-      onError: (e, s) => console.log(e.toString(), stackTrace: s),
+      onError: (e, s) => console.log(e.toString()),
       app: const MaterialApp(
-        home: MyApp(),
         title: 'Downloader Notifier',
+        home: MyApp(),
       ),
     ),
   );
@@ -21,21 +21,39 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Builder(builder: (context) {
-        return Center(
-          child: DownloaderNotifier.button(
-              url:
-                  'https://freetestdata.com/wp-content/uploads/2021/09/1-MB-DOC.doc',
-              onError: (e, s) {
-                ScaffoldMessenger.maybeOf(context)?.showSnackBar(
-                  SnackBar(
-                    content: Text(e.toString()),
+      body: Builder(
+        builder: (context) {
+          return Center(
+            child: Material(
+              color: Colors.blue,
+              child: DownloaderNotifier.button(
+                url:
+                    'https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_1MB_PDF.pdf',
+                onError: (e, s) {
+                  ScaffoldMessenger.maybeOf(context)?.showSnackBar(
+                    SnackBar(
+                      content: Text(e.toString()),
+                    ),
+                  );
+                },
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 8.0,
                   ),
-                );
-              },
-              child: const Text('Download Test')),
-        );
-      }),
+                  child: Text(
+                    'Download',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
