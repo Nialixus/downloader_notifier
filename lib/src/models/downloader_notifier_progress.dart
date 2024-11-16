@@ -1,6 +1,6 @@
 part of '../../downloader_notifier.dart';
 
-class DownloaderNotifierProgress extends Equatable {
+class DownloaderNotifierProgress {
   const DownloaderNotifierProgress({
     required this.id,
     required this.path,
@@ -100,9 +100,6 @@ class DownloaderNotifierProgress extends Equatable {
         );
     }
   }
-
-  @override
-  List<Object?> get props => [id, path, progress, status, description];
 
   @override
   String toString() {

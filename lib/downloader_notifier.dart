@@ -1,11 +1,9 @@
 library downloader_notifier;
 
 import 'dart:async';
-// import 'dart:collection';
 // import 'dart:developer' as console;
 import 'dart:math';
 
-import 'package:equatable/equatable.dart';
 import 'package:fl_downloader/fl_downloader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_in_app_pip/flutter_in_app_pip.dart';
