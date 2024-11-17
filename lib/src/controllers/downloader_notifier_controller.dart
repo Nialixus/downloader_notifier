@@ -21,7 +21,7 @@ class DownloaderNotifierController extends InheritedWidget {
       final permission = await FlDownloader.requestPermission();
       final hasPermission = permission == StoragePermissionStatus.granted;
       if (hasPermission) {
-        final hasData = queue.isNotEmpty == true;
+        final hasData = queue.isNotEmpty;
         final isRunning = hasData &&
             queue.any((where) => where.status == DownloadStatus.running);
         if (isRunning) {

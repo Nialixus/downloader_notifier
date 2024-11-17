@@ -22,37 +22,35 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Builder(
-        builder: (context) {
-          return Center(
-            child: Material(
-              color: Colors.blue,
-              child: DownloaderNotifier.button(
-                url:
-                    'https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_1MB_PDF.pdf',
-                onError: (e, s) {
-                  ScaffoldMessenger.maybeOf(context)?.showSnackBar(
-                    SnackBar(
-                      content: Text(e.toString()),
-                    ),
-                  );
-                },
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                    vertical: 8.0,
+        builder: (x) => Center(
+          child: Material(
+            color: Colors.blue,
+            child: DownloaderNotifier.button(
+              url: 'https://freetestdata.com/wp-content/uploads'
+                  '/2021/09/Free_Test_Data_1MB_PDF.pdf',
+              onError: (e, s) {
+                ScaffoldMessenger.maybeOf(x)?.showSnackBar(
+                  SnackBar(
+                    content: Text('$e'),
                   ),
-                  child: Text(
-                    'Download',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+                );
+              },
+              child: const Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 8.0,
+                ),
+                child: Text(
+                  'Download',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }

@@ -264,6 +264,7 @@ class _DNBs extends State<DownloaderNotifierBar> {
                                             try {
                                               await FlDownloader.openFile(
                                                   filePath: widget.data.path);
+                                              latest = DateTime.now();
                                               return await controller?.close();
                                             } catch (e, s) {
                                               return controller?.onError

@@ -10,7 +10,7 @@ class DownloaderNotifierInitializer extends StatefulWidget {
     this.width,
     this.height,
     this.draggable = true,
-    this.initialCorner = PIPViewCorner.bottomRight,
+    this.alignment = DownloaderNotifierAlignment.bottomRight,
     required this.app,
   });
   final Duration onFinishDuration;
@@ -21,7 +21,7 @@ class DownloaderNotifierInitializer extends StatefulWidget {
   final double? width;
   final double? height;
   final bool draggable;
-  final PIPViewCorner initialCorner;
+  final DownloaderNotifierAlignment alignment;
 
   @override
   State<DownloaderNotifierInitializer> createState() => _DNIs();
@@ -47,7 +47,7 @@ class _DNIs extends State<DownloaderNotifierInitializer> {
       onError: widget.onError,
       child: PiPMaterialApp(
         pipParams: PiPParams(
-          initialCorner: widget.initialCorner,
+          initialCorner: PIPViewCorner.values[widget.alignment.index],
           // resizable: true,
           bottomSpace:
               widget.margin?.bottom ?? MediaQuery.sizeOf(context).width * 0.05,
