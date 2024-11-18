@@ -200,8 +200,11 @@ class _DNIs extends State<DownloaderNotifierInitializer> {
       stream = FlDownloader.progressStream.listen(
         (event) async {
           try {
-            setState(() =>
-                _queue = [...queue, DownloaderNotifierProgress.migrate(event)]);
+            setState(() => _queue = [
+                  ..._queue,
+                  DownloaderNotifierProgress.migrate(event)
+                ]);
+            await Future.delayed(const Duration(milliseconds: 10));
             if (queue.any((where) => where.status == DownloadStatus.running)) {
               PictureInPicture.startPiP(
                 pipWidget: NavigatablePiPWidget(
