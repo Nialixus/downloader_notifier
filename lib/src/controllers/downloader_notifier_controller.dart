@@ -27,7 +27,7 @@ class DownloaderNotifierController extends InheritedWidget {
         if (isRunning) {
           onError?.call('There is a download in progress', null);
         } else {
-          await close();
+          // await close();
           FlDownloader.download(url);
           PictureInPicture.startPiP(
             pipWidget: NavigatablePiPWidget(

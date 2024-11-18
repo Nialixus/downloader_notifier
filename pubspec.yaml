@@ -1,6 +1,6 @@
 name: downloader_notifier
 description: "A floating bar for real-time download progress updates, designed for both Android and iOS."
-version: 1.0.1
+version: 1.0.2
 homepage: https://inidia.app
 repository: https://github.com/Nialixus/downloader_notifier
 funding:

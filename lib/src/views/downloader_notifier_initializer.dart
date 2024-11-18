@@ -61,145 +61,132 @@ class _DNIs extends State<DownloaderNotifierInitializer> {
       onFinishDuration: widget.onFinishDuration,
       onError: widget.onError,
       child: () {
+        final param = PiPParams(
+          initialCorner: PIPViewCorner.values[widget.alignment.index],
+          // resizable: true,
+          bottomSpace:
+              widget.margin?.bottom ?? MediaQuery.sizeOf(context).width * 0.05,
+          leftSpace:
+              widget.margin?.left ?? MediaQuery.sizeOf(context).width * 0.05,
+          rightSpace:
+              widget.margin?.right ?? MediaQuery.sizeOf(context).width * 0.05,
+          topSpace:
+              widget.margin?.top ?? MediaQuery.sizeOf(context).width * 0.05,
+          pipWindowHeight:
+              widget.height ?? MediaQuery.sizeOf(context).width * 0.225,
+          pipWindowWidth:
+              widget.width ?? MediaQuery.sizeOf(context).width * 0.9,
+          minSize: Size(
+              widget.width ?? MediaQuery.sizeOf(context).width * 0.225,
+              widget.height ?? MediaQuery.sizeOf(context).width * 0.9),
+          maxSize: Size(
+              widget.width ?? MediaQuery.sizeOf(context).width * 0.225,
+              widget.height ?? MediaQuery.sizeOf(context).width * 0.9),
+          movable: widget.draggable,
+        );
         switch (widget._isRouter) {
           case true:
-            return PiPMaterialApp.router(
-              pipParams: PiPParams(
-                initialCorner: PIPViewCorner.values[widget.alignment.index],
-                // resizable: true,
-                bottomSpace: widget.margin?.bottom ??
-                    MediaQuery.sizeOf(context).width * 0.05,
-                leftSpace: widget.margin?.left ??
-                    MediaQuery.sizeOf(context).width * 0.05,
-                rightSpace: widget.margin?.right ??
-                    MediaQuery.sizeOf(context).width * 0.05,
-                topSpace: widget.margin?.top ??
-                    MediaQuery.sizeOf(context).width * 0.05,
-                pipWindowHeight:
-                    widget.height ?? MediaQuery.sizeOf(context).width * 0.225,
-                pipWindowWidth:
-                    widget.width ?? MediaQuery.sizeOf(context).width * 0.9,
-                minSize: Size(
-                    widget.width ?? MediaQuery.sizeOf(context).width * 0.225,
-                    widget.height ?? MediaQuery.sizeOf(context).width * 0.9),
-                maxSize: Size(
-                    widget.width ?? MediaQuery.sizeOf(context).width * 0.225,
-                    widget.height ?? MediaQuery.sizeOf(context).width * 0.9),
-                movable: widget.draggable,
+            return PopScope(
+              canPop: false,
+              child: PiPMaterialApp.router(
+                pipParams: param,
+                key: widget.app.key,
+                title: widget.app.title,
+                actions: widget.app.actions,
+                checkerboardOffscreenLayers:
+                    widget.app.checkerboardOffscreenLayers,
+                checkerboardRasterCacheImages:
+                    widget.app.checkerboardRasterCacheImages,
+                showPerformanceOverlay: widget.app.showPerformanceOverlay,
+                debugShowMaterialGrid: widget.app.debugShowMaterialGrid,
+                debugShowCheckedModeBanner:
+                    widget.app.debugShowCheckedModeBanner,
+                color: widget.app.color,
+                locale: widget.app.locale,
+                localizationsDelegates: widget.app.localizationsDelegates,
+                localeListResolutionCallback:
+                    widget.app.localeListResolutionCallback,
+                localeResolutionCallback: widget.app.localeResolutionCallback,
+                supportedLocales: widget.app.supportedLocales,
+                builder: widget.app.builder,
+                onGenerateTitle: widget.app.onGenerateTitle,
+                darkTheme: widget.app.darkTheme,
+                highContrastDarkTheme: widget.app.highContrastDarkTheme,
+                highContrastTheme: widget.app.highContrastTheme,
+                theme: widget.app.theme,
+                themeMode: widget.app.themeMode,
+                onNavigationNotification: widget.app.onNavigationNotification,
+                restorationScopeId: widget.app.restorationScopeId,
+                scaffoldMessengerKey: widget.app.scaffoldMessengerKey,
+                scrollBehavior: widget.app.scrollBehavior,
+                shortcuts: widget.app.shortcuts,
+                showSemanticsDebugger: widget.app.showSemanticsDebugger,
+                themeAnimationCurve: widget.app.themeAnimationCurve,
+                themeAnimationDuration: widget.app.themeAnimationDuration,
+                themeAnimationStyle: widget.app.themeAnimationStyle,
+                // ignore: deprecated_member_use
+                useInheritedMediaQuery: widget.app.useInheritedMediaQuery,
+                backButtonDispatcher: widget.app.backButtonDispatcher,
+                routeInformationParser: widget.app.routeInformationParser,
+                routeInformationProvider: widget.app.routeInformationProvider,
+                routerConfig: widget.app.routerConfig,
+                routerDelegate: widget.app.routerDelegate,
               ),
-              key: widget.app.key,
-              title: widget.app.title,
-              actions: widget.app.actions,
-              checkerboardOffscreenLayers:
-                  widget.app.checkerboardOffscreenLayers,
-              checkerboardRasterCacheImages:
-                  widget.app.checkerboardRasterCacheImages,
-              showPerformanceOverlay: widget.app.showPerformanceOverlay,
-              debugShowMaterialGrid: widget.app.debugShowMaterialGrid,
-              debugShowCheckedModeBanner: widget.app.debugShowCheckedModeBanner,
-              color: widget.app.color,
-              locale: widget.app.locale,
-              localizationsDelegates: widget.app.localizationsDelegates,
-              localeListResolutionCallback:
-                  widget.app.localeListResolutionCallback,
-              localeResolutionCallback: widget.app.localeResolutionCallback,
-              supportedLocales: widget.app.supportedLocales,
-              builder: widget.app.builder,
-              onGenerateTitle: widget.app.onGenerateTitle,
-              darkTheme: widget.app.darkTheme,
-              highContrastDarkTheme: widget.app.highContrastDarkTheme,
-              highContrastTheme: widget.app.highContrastTheme,
-              theme: widget.app.theme,
-              themeMode: widget.app.themeMode,
-              onNavigationNotification: widget.app.onNavigationNotification,
-              restorationScopeId: widget.app.restorationScopeId,
-              scaffoldMessengerKey: widget.app.scaffoldMessengerKey,
-              scrollBehavior: widget.app.scrollBehavior,
-              shortcuts: widget.app.shortcuts,
-              showSemanticsDebugger: widget.app.showSemanticsDebugger,
-              themeAnimationCurve: widget.app.themeAnimationCurve,
-              themeAnimationDuration: widget.app.themeAnimationDuration,
-              themeAnimationStyle: widget.app.themeAnimationStyle,
-              // ignore: deprecated_member_use
-              useInheritedMediaQuery: widget.app.useInheritedMediaQuery,
-              backButtonDispatcher: widget.app.backButtonDispatcher,
-              routeInformationParser: widget.app.routeInformationParser,
-              routeInformationProvider: widget.app.routeInformationProvider,
-              routerConfig: widget.app.routerConfig,
-              routerDelegate: widget.app.routerDelegate,
             );
           case false:
-            return PiPMaterialApp(
-              pipParams: PiPParams(
-                initialCorner: PIPViewCorner.values[widget.alignment.index],
-                // resizable: true,
-                bottomSpace: widget.margin?.bottom ??
-                    MediaQuery.sizeOf(context).width * 0.05,
-                leftSpace: widget.margin?.left ??
-                    MediaQuery.sizeOf(context).width * 0.05,
-                rightSpace: widget.margin?.right ??
-                    MediaQuery.sizeOf(context).width * 0.05,
-                topSpace: widget.margin?.top ??
-                    MediaQuery.sizeOf(context).width * 0.05,
-                pipWindowHeight:
-                    widget.height ?? MediaQuery.sizeOf(context).width * 0.225,
-                pipWindowWidth:
-                    widget.width ?? MediaQuery.sizeOf(context).width * 0.9,
-                minSize: Size(
-                    widget.width ?? MediaQuery.sizeOf(context).width * 0.225,
-                    widget.height ?? MediaQuery.sizeOf(context).width * 0.9),
-                maxSize: Size(
-                    widget.width ?? MediaQuery.sizeOf(context).width * 0.225,
-                    widget.height ?? MediaQuery.sizeOf(context).width * 0.9),
-                movable: widget.draggable,
+            return PopScope(
+              canPop: false,
+              child: PiPMaterialApp(
+                pipParams: param,
+                key: widget.app.key,
+                home: widget.app.home,
+                title: widget.app.title,
+                actions: widget.app.actions,
+                checkerboardOffscreenLayers:
+                    widget.app.checkerboardOffscreenLayers,
+                checkerboardRasterCacheImages:
+                    widget.app.checkerboardRasterCacheImages,
+                showPerformanceOverlay: widget.app.showPerformanceOverlay,
+                debugShowMaterialGrid: widget.app.debugShowMaterialGrid,
+                debugShowCheckedModeBanner:
+                    widget.app.debugShowCheckedModeBanner,
+                color: widget.app.color,
+                navigatorObservers: widget.app.navigatorObservers ??
+                    const <NavigatorObserver>[],
+                locale: widget.app.locale,
+                localizationsDelegates: widget.app.localizationsDelegates,
+                localeListResolutionCallback:
+                    widget.app.localeListResolutionCallback,
+                localeResolutionCallback: widget.app.localeResolutionCallback,
+                supportedLocales: widget.app.supportedLocales,
+                onGenerateRoute: widget.app.onGenerateRoute,
+                onUnknownRoute: widget.app.onUnknownRoute,
+                navigatorKey: widget.app.navigatorKey,
+                onGenerateInitialRoutes: widget.app.onGenerateInitialRoutes,
+                builder: widget.app.builder,
+                onGenerateTitle: widget.app.onGenerateTitle,
+                darkTheme: widget.app.darkTheme,
+                highContrastDarkTheme: widget.app.highContrastDarkTheme,
+                highContrastTheme: widget.app.highContrastTheme,
+                theme: widget.app.theme,
+                themeMode: widget.app.themeMode,
+                initialRoute: widget.app.initialRoute,
+                onNavigationNotification: widget.app.onNavigationNotification,
+                restorationScopeId: widget.app.restorationScopeId,
+                routes: <String, WidgetBuilder>{
+                  for (var item in widget.app.routes?.entries ?? {}.entries)
+                    item.key: item.value
+                },
+                scaffoldMessengerKey: widget.app.scaffoldMessengerKey,
+                scrollBehavior: widget.app.scrollBehavior,
+                shortcuts: widget.app.shortcuts,
+                showSemanticsDebugger: widget.app.showSemanticsDebugger,
+                themeAnimationCurve: widget.app.themeAnimationCurve,
+                themeAnimationDuration: widget.app.themeAnimationDuration,
+                themeAnimationStyle: widget.app.themeAnimationStyle,
+                // ignore: deprecated_member_use
+                useInheritedMediaQuery: widget.app.useInheritedMediaQuery,
               ),
-              key: widget.app.key,
-              home: widget.app.home,
-              title: widget.app.title,
-              actions: widget.app.actions,
-              checkerboardOffscreenLayers:
-                  widget.app.checkerboardOffscreenLayers,
-              checkerboardRasterCacheImages:
-                  widget.app.checkerboardRasterCacheImages,
-              showPerformanceOverlay: widget.app.showPerformanceOverlay,
-              debugShowMaterialGrid: widget.app.debugShowMaterialGrid,
-              debugShowCheckedModeBanner: widget.app.debugShowCheckedModeBanner,
-              color: widget.app.color,
-              navigatorObservers:
-                  widget.app.navigatorObservers ?? const <NavigatorObserver>[],
-              locale: widget.app.locale,
-              localizationsDelegates: widget.app.localizationsDelegates,
-              localeListResolutionCallback:
-                  widget.app.localeListResolutionCallback,
-              localeResolutionCallback: widget.app.localeResolutionCallback,
-              supportedLocales: widget.app.supportedLocales,
-              onGenerateRoute: widget.app.onGenerateRoute,
-              onUnknownRoute: widget.app.onUnknownRoute,
-              navigatorKey: widget.app.navigatorKey,
-              onGenerateInitialRoutes: widget.app.onGenerateInitialRoutes,
-              builder: widget.app.builder,
-              onGenerateTitle: widget.app.onGenerateTitle,
-              darkTheme: widget.app.darkTheme,
-              highContrastDarkTheme: widget.app.highContrastDarkTheme,
-              highContrastTheme: widget.app.highContrastTheme,
-              theme: widget.app.theme,
-              themeMode: widget.app.themeMode,
-              initialRoute: widget.app.initialRoute,
-              onNavigationNotification: widget.app.onNavigationNotification,
-              restorationScopeId: widget.app.restorationScopeId,
-              routes: <String, WidgetBuilder>{
-                for (var item in widget.app.routes?.entries ?? {}.entries)
-                  item.key: item.value
-              },
-              scaffoldMessengerKey: widget.app.scaffoldMessengerKey,
-              scrollBehavior: widget.app.scrollBehavior,
-              shortcuts: widget.app.shortcuts,
-              showSemanticsDebugger: widget.app.showSemanticsDebugger,
-              themeAnimationCurve: widget.app.themeAnimationCurve,
-              themeAnimationDuration: widget.app.themeAnimationDuration,
-              themeAnimationStyle: widget.app.themeAnimationStyle,
-              // ignore: deprecated_member_use
-              useInheritedMediaQuery: widget.app.useInheritedMediaQuery,
             );
         }
       }(),

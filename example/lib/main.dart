@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
           child: Material(
             color: Colors.blue,
             child: DownloaderNotifier.button(
-              url: 'https://freetestdata.com/wp-content/uploads'
-                  '/2021/09/Free_Test_Data_1MB_PDF.pdf',
+              url:
+                  'https://freetestdata.com/wp-content/uploads/2022/11/Free_Test_Data_10.5MB_PDF.pdf',
               onError: (e, s) {
                 ScaffoldMessenger.maybeOf(x)?.showSnackBar(
                   SnackBar(
