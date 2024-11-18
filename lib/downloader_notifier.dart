@@ -32,19 +32,36 @@ abstract class DownloaderNotifier {
     double? width,
     EdgeInsets? margin,
     required MaterialApp app,
+    bool isRouter = false,
   }) {
-    return DownloaderNotifierInitializer(
-      key: key,
-      onProgress: onProgress,
-      onError: onError,
-      app: app,
-      draggable: draggable,
-      alignment: alignment,
-      height: height,
-      margin: margin,
-      onFinishDuration: onFinishDuration,
-      width: width,
-    );
+    switch (isRouter) {
+      case true:
+        return DownloaderNotifierInitializer.router(
+          key: key,
+          onProgress: onProgress,
+          onError: onError,
+          app: app,
+          draggable: draggable,
+          alignment: alignment,
+          height: height,
+          margin: margin,
+          onFinishDuration: onFinishDuration,
+          width: width,
+        );
+      case false:
+        return DownloaderNotifierInitializer(
+          key: key,
+          onProgress: onProgress,
+          onError: onError,
+          app: app,
+          draggable: draggable,
+          alignment: alignment,
+          height: height,
+          margin: margin,
+          onFinishDuration: onFinishDuration,
+          width: width,
+        );
+    }
   }
 
   static DownloaderNotifierButton button({
