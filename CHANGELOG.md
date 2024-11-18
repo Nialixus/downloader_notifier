@@ -6,3 +6,6 @@
 
 ## 1.0.2
 - Minor Update
+
+## 1.0.3
+- Call pip on init
