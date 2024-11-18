@@ -202,6 +202,23 @@ class _DNIs extends State<DownloaderNotifierInitializer> {
           try {
             setState(() =>
                 _queue = [...queue, DownloaderNotifierProgress.migrate(event)]);
+            if (queue.any((where) => where.status == DownloadStatus.running)) {
+              PictureInPicture.startPiP(
+                pipWidget: NavigatablePiPWidget(
+                  pipBorderRadius: 8.0,
+                  elevation: 0.0,
+                  onPiPClose: () {},
+                  builder: (_) {
+                    return DownloaderNotifierBar(
+                      queue.isEmpty
+                          ? DownloaderNotifierProgress.test(random: false)
+                          : queue.last,
+                      parentContext: context,
+                    );
+                  },
+                ),
+              );
+            }
           } catch (e, s) {
             widget.onError?.call(e, s);
           }

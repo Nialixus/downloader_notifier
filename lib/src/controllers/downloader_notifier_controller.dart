@@ -29,22 +29,6 @@ class DownloaderNotifierController extends InheritedWidget {
         } else {
           // await close();
           FlDownloader.download(url);
-          PictureInPicture.startPiP(
-            pipWidget: NavigatablePiPWidget(
-              pipBorderRadius: 8.0,
-              elevation: 0.0,
-              onPiPClose: () {},
-              builder: (x) {
-                final queue = DownloaderNotifierController.of(x).queue;
-                return DownloaderNotifierBar(
-                  queue.isEmpty
-                      ? DownloaderNotifierProgress.test(random: false)
-                      : queue.last,
-                  parentContext: context,
-                );
-              },
-            ),
-          );
         }
       } else {
         onError?.call('Permission denied', null);
